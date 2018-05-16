@@ -3,46 +3,39 @@ import _ from 'lodash';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions';
-import { Card, LoginSection, Button, Confirm, Background} from './common';
-
+import { Card, LoginSection, Button, Confirm, Background } from './common';
+import { Image } from 'react-native';
+import PhotoUpload from 'react-native-photo-upload';
 
 class Settings extends Component {
-    state = { showModal: false };
+  state = { showModal: false };
 
-    onAccept() {
-        this.props.logoutUser();
-    }
+  render() {
+    return (
+      <Background>
+        <PhotoUpload
+          onPhotoSelect={avatar => {
+            if (avatar) {
+              console.log('Image base64 string: ', avatar)
+            }
+          }}
+        >
+          <Image
+            style={{
+              paddingVertical: 30,
+              width: 150,
+              height: 150,
+              borderRadius: 75
+            }}
+            resizeMode='cover'
+            source={{
+              uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
+            }}
+          />
+        </PhotoUpload>
+      </Background>
+    );
+  }
 
-   onDecline() {
-        this.setState({ showModal:false });
-    }
-
-
-    render() {
-       return(
-           <Background>
-                <LoginSection>
-                         <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
-                      Log Out
-                         </Button>
-                     </LoginSection>
-                     <Confirm 
-                     visible={this.state.showModal}
-                     onAccept={this.onAccept.bind(this)}
-                     onDecline={this.onDecline.bind(this)}
-                     >
-                          Are you sure you want to log out? 
-                     </Confirm>
-           </Background>
-       );
-    }
 }
-
-const mapStateToProps = (state) => {
-    const events = _.map(state.events, (val, uid) => {
-      return { ...val, uid };
-  });
-    return { events };
-  };
-  
-  export default connect(mapStateToProps, { logoutUser })(Settings);
+export default Settings;

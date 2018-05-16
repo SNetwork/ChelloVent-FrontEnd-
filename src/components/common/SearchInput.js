@@ -53,6 +53,7 @@ const SearchInput = ({ label , value , onChangeText, placeholder, secureTextEntr
               <TextInput
                   underlineColorAndroid='#bce0fd'
                   secureTextEntry={secureTextEntry}
+                  keyboardType = 'numeric'
                   placeholder='Date'
                   placeholderTextColor='#2699fb'
                   autoCorrect={false}
@@ -66,6 +67,7 @@ const SearchInput = ({ label , value , onChangeText, placeholder, secureTextEntr
               <TextInput
                   underlineColorAndroid='#bce0fd'
                   secureTextEntry={secureTextEntry}
+                  keyboardType = 'numeric'
                   placeholder='Date'
                   placeholderTextColor='#2699fb'
                   autoCorrect={false}

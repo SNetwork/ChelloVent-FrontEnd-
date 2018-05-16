@@ -18,30 +18,16 @@ class ListItem extends Component {
         toggle: false
       };
 
-    onButtonPress() {
-        Actions.eventEdit({ event: this.props.event });
+      onButtonPress() {
+        Actions.Detailed({ event: this.props.event });
     }
+
     render() {
         const {rightActionActivated, toggle} = this.state;
 
         const { name , date, location , tag , description } = this.props.event;
 
         return(
-            <Swipeable
-              rightActionActivationDistance={100}
-              rightContent={(
-                              <View style={[styles.rightSwipeItem, {backgroundColor: rightActionActivated ? 'green' : 'steelblue'}]}>
-                                    {rightActionActivated ?
-                                    <Text>Joined!</Text>
-                                       :
-                                    <Text>keep pulling!</Text>}
-                              </View>
-                            )}
-              onRightActionActivate={() => this.setState({rightActionActivated: true})}
-              onRightActionDeactivate={() => this.setState({rightActionActivated: false})}
-              onRightActionComplete={() => this.setState({toggle: !toggle})}
-              onRightActionRelease={() => eventJoin(this.props.event )}
-            >
                   <Card>
                       <View style={styles.container}>
                           <View style={styles.header}>
@@ -84,8 +70,10 @@ class ListItem extends Component {
                               <FeedButton onPress={eventJoin(this.props.event )}> Join </FeedButton>
                           </View>
                       </View>
+                      <LoginSection>
+            <Button onPress={this.onButtonPress.bind(this)}> Details... </Button>
+            </LoginSection>
                   </Card>
-            </Swipeable>
         );
     }
 }

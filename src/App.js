@@ -22,11 +22,11 @@ class App extends Component {
   componentWillMount(){
     const config = {
       apiKey: "AIzaSyAHOP6WZaA3D6bqw-wPYJax9FDPo0ZIhUM",
-      authDomain: "social-network-d86d8.firebaseapp.com",
-      databaseURL: "https://social-network-d86d8.firebaseio.com",
-      projectId: "social-network-d86d8",
-      storageBucket: "social-network-d86d8.appspot.com",
-      messagingSenderId: "344179996750"
+    authDomain: "social-network-d86d8.firebaseapp.com",
+    databaseURL: "https://social-network-d86d8.firebaseio.com",
+    projectId: "social-network-d86d8",
+    storageBucket: "social-network-d86d8.appspot.com",
+    messagingSenderId: "344179996750"
       };
       firebase.initializeApp(config);
     }
@@ -34,7 +34,7 @@ class App extends Component {
       const store = createStore(reducers, {}, applyMiddleware(ReduxThunk)); 
   return (
     <Provider store={store}>
-    <Router />
+        <Router />
     </Provider>
     );
   }

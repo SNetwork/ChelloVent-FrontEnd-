@@ -22,6 +22,7 @@ class EventForm extends Component {
              <Input 
               label="Date"
               placeholder="24.06.2018"
+              keyboardType='numeric'
               value={this.props.date}
               onChangeText={value => this.props.eventUpdate({ prop: 'date', value })}
               /> 

@@ -129,3 +129,11 @@ export const eventDelete = ({ uid }) => {
     });
     };
 };
+
+export const unJoinEvent = ({ uid }) => {
+    return() => {
+    firebase.database().ref(`/users/${firebase.auth().currentUser.uid}/joinedEvents/${uid}`)
+    .remove()
+    }
+}
+

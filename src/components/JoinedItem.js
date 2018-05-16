@@ -7,7 +7,7 @@ import {
  import { connect } from 'react-redux';
  import { Actions } from 'react-native-router-flux';
 import { FeedButton, LoginSection,CardSection,Card,Confirm } from './common';
-import { eventDelete } from '../actions';
+import { unJoinEvent } from '../actions';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 class JoinedItem extends Component {
@@ -15,7 +15,7 @@ class JoinedItem extends Component {
 
   onAccept() {
     const { uid } = this.props.joinedevent;
-    this.props.eventDelete({ uid });
+    this.props.unJoinEvent({ uid });
   }
 
  onDecline() {
@@ -139,6 +139,6 @@ const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
    { 
-      eventDelete
+    unJoinEvent
   })
   (JoinedItem);
