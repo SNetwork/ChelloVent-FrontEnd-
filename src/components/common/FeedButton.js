@@ -2,16 +2,16 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 const FeedButton = ({ onPress, children }) => {
-    const { buttonStyle , textStyle } = styles;
+    const { buttonStyle, textStyle } = styles;
 
-        return (
-         <TouchableOpacity onPress={onPress} style={buttonStyle}>
-         <Text style={textStyle}>
-         {children}
-         </Text>
-         </TouchableOpacity>
-        );
-    };
+    return (
+        <TouchableOpacity onPress={onPress} style={[buttonStyle, this.button]}>
+            <Text style={textStyle}>
+                {children}
+            </Text>
+        </TouchableOpacity>
+    );
+};
 
 const styles = {
     textStyle: {
@@ -21,7 +21,7 @@ const styles = {
         textAlign: 'center',
     },
     buttonStyle: {
-        flex: 1,
+        height: 50,
         padding: 10,
     }
 };

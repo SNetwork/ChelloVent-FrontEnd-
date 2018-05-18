@@ -85,6 +85,8 @@ const RouterComponent = () => {
                             key="Detailed"
                             component={Detailed}
                             title="Details"
+                            icon={TabIcon1}
+                            hideNavBar
                         />
                         <Scene
                             rightTitle={NavIcon}

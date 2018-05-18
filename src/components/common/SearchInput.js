@@ -20,7 +20,8 @@ const SearchInput = ({ label , value , onChangeText, placeholder, secureTextEntr
           			autoCorrect={false}
           			style={styles.textStyle}
           			value={value}
-          			onChangeText={onChangeText}
+                onChangeText={onChangeText}
+                autoCorrect = {true}
           			/>
           	</View>
         </View>

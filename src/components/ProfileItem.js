@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
       Text,
       TouchableWithoutFeedback,
-      View
+      View,
+      TouchableOpacity
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { ProfileButton, CardSection, ProfileSection, ProfileCard } from './common';
@@ -35,17 +36,29 @@ class ProfileItem extends Component {
             return (
                   <ProfileCard>
                         <View style={styles.header}>
-                              <View style={styles.edit}>
-                                    <EvilIcons onPress={this.onButtonPress1.bind(this)} name='pencil' color='#2699fb' size={36} />
-                              </View>
-
-                              <View style={styles.settings}>
-                                    <EvilIcons onPress={this.onButtonPress2.bind(this)} name='gear' color='#2699fb' size={36} />
-                              </View>
+                              <TouchableOpacity onPress={this.onButtonPress2.bind(this)}>
+                                    <EvilIcons name='gear' color='#2699fb' size={40} />
+                              </TouchableOpacity>
                         </View>
                         <View style={styles.body}>
-                              <View style={styles.userPhoto}>
-                                    <UserAvatar name={name + surname} size={100} />
+                              <View style={styles.main}>
+                                    <View style={styles.userPhoto}>
+                                          <UserAvatar name={name + surname} size={100} />
+                                    </View>
+
+                                    <View style={styles.icons}>
+                                          <View style={styles.edit}>
+                                                <TouchableOpacity onPress={this.onButtonPress1.bind(this)}>
+                                                      <EvilIcons name='pencil' color='#2699fb' size={46} />
+                                                </TouchableOpacity>
+                                          </View>
+
+                                          <View style={styles.settings}>
+                                                <TouchableOpacity onPress={() => { Actions.eventCreate() }}>
+                                                      <EvilIcons name='plus' color='#2699fb' size={46} />
+                                                </TouchableOpacity>
+                                          </View>
+                                    </View>
                               </View>
 
                               <View style={styles.userName}>
@@ -96,23 +109,32 @@ class ProfileItem extends Component {
 
 const styles = {
       header: {
+            justifyContent: 'center',
+            padding: 13,
+            alignItems: 'flex-end'
+      },
+      main: {
             flex: 1,
             flexDirection: 'row',
-            padding: 10,
-            marginBottom: 20,
+            marginTop: '10%',
+            marginBottom: 15,
+      },
+      icons: {
+            paddingLeft: 30,
       },
       edit: {
             flex: 1,
-            alignItems: 'flex-start'
+            justifyContent: 'center',
       },
       settings: {
             flex: 1,
-            alignItems: 'flex-end'
+            justifyContent: 'center',
       },
       body: {
             alignItems: 'center',
       },
       userPhoto: {
+            paddingLeft: 76,
       },
       userName: {
       },
@@ -122,7 +144,9 @@ const styles = {
       userLocation: {},
       userAge: {},
       description: {
-            padding: '5%',
+            paddingTop: '10%',
+            paddingLeft: '5%',
+            paddingRight: '5%',
       },
       buttons: {
             marginTop: 20,
