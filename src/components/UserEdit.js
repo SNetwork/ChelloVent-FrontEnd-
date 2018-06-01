@@ -15,8 +15,8 @@ class UserEdit extends Component {
         });
      }
     onAccept() {
-        const { name , surname, age, location, hobby } = this.props;
-        this.props.userSave({name , surname, age, location, hobby, uid: this.props.userInfo.uid });
+        const { username , surname, age, userlocation, hobby } = this.props;
+        this.props.userSave({username , surname, age, userlocation, hobby, uid: this.props.userInfo.uid });
     }
 
    onDecline() {
@@ -47,9 +47,9 @@ class UserEdit extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    const { name , surname, age, location, hobby } = state.userForm;
+    const { username , surname, age, userlocation, hobby } = state.userForm;
 
-    return { name , surname, age, location, hobby };
+    return { username , surname, age, userlocation, hobby };
   };
 
 

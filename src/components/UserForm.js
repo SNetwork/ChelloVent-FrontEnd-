@@ -13,8 +13,8 @@ class UserForm extends Component {
              <Input 
               label="Name"
               placeholder="Name..."
-              value={this.props.name}
-              onChangeText={value => this.props.userUpdate({ prop: 'name', value })}
+              value={this.props.username}
+              onChangeText={value => this.props.userUpdate({ prop: 'username', value })}
               />
              </LoginSection>
 
@@ -40,8 +40,8 @@ class UserForm extends Component {
              <Input 
               label="Location"
               placeholder="City..."
-              value={this.props.location}
-              onChangeText={value => this.props.userUpdate({ prop: 'location', value })}
+              value={this.props.userlocation}
+              onChangeText={value => this.props.userUpdate({ prop: 'userlocation', value })}
               /> 
              </LoginSection>
 
@@ -68,9 +68,9 @@ const styles ={
 };
 
 const mapStateToProps = (state) => {
-    const { name , surname, age, location, hobby } = state.userForm;
+    const { username , surname, age, userlocation, hobby } = state.userForm;
   
-    return { name , surname, age, location, hobby };
+    return { username , surname, age, userlocation, hobby };
   };
   
 

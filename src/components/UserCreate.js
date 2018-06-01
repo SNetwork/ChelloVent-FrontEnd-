@@ -8,9 +8,9 @@ import { Actions } from 'react-native-router-flux';
 class UserCreate extends Component {
 
     onButtonPress(){
-     const { name , surname, age, location, hobby } = this.props;
+     const { username , surname, age, userlocation, hobby } = this.props;
 
-     this.props.userCreate({ name , surname, age, location, hobby });
+     this.props.userCreate({ username , surname, age, userlocation, hobby });
 
      Actions.Feed();
     }
@@ -31,9 +31,9 @@ class UserCreate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { name , surname, age, location, hobby } = state.userForm;
+  const { username , surname, age, userlocation, hobby } = state.userForm;
 
-  return { name , surname, age, location, hobby };
+  return { username , surname, age, userlocation, hobby };
 };
 
 

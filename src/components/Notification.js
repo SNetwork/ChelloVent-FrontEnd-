@@ -12,7 +12,7 @@ class Notification extends Component {
         return (
             <Background>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>This is Notification Error page</Text>
+                    <Text>This is Notification List</Text>
                 </View>
             </Background>
         );

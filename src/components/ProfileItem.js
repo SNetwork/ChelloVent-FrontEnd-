@@ -31,7 +31,7 @@ class ProfileItem extends Component {
 
       render() {
 
-            const { name, surname, age, location, hobby } = this.props.userInfo;
+            const { username, surname, age, userlocation, hobby } = this.props.userInfo;
 
             return (
                   <ProfileCard>
@@ -43,7 +43,7 @@ class ProfileItem extends Component {
                         <View style={styles.body}>
                               <View style={styles.main}>
                                     <View style={styles.userPhoto}>
-                                          <UserAvatar name={name + surname} size={100} />
+                                          <UserAvatar name={username} size={100} />
                                     </View>
 
                                     <View style={styles.icons}>
@@ -63,27 +63,27 @@ class ProfileItem extends Component {
 
                               <View style={styles.userName}>
                                     <Text style={styles.nameStyle}>
-                                          {name} {surname}
+                                          {username+"  "} {surname+"  "}
                                     </Text>
                               </View>
 
                               <View style={styles.userInfo}>
                                     <View style={styles.userLocation}>
                                           <Text style={styles.infoStyle}>
-                                                {location},
+                                                {userlocation+"  "},
                                     </Text>
                                     </View>
 
                                     <View style={styles.userAge}>
                                           <Text style={styles.infoStyle}>
-                                                {age}
+                                                {age+"  "}
                                           </Text>
                                     </View>
                               </View>
 
                               <View style={styles.description}>
                                     <Text style={styles.descriptionStyle}>
-                                          {hobby}
+                                          {hobby+"  "}
                                     </Text>
                               </View>
 

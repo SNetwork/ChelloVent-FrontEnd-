@@ -13,11 +13,15 @@ import Profile from './components/Profile';
 import Joined from './components/Joined';
 import Created from './components/Created';
 import Search from './components/Search';
+import Searched from './components/Searched';
+import SearchedList from './components/SearchedList';
 import Message from './components/Message';
 import Notification from './components/Notification';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import firebase from 'firebase';
 import Detailed from './components/Detailed';
+import SearchDetailed from './components/SearchDetailed';
+import ChatScreenContainer from './components/Chat/Container';
 
 const TabIcon1 = ({ }) => {
     return (
@@ -59,12 +63,12 @@ const RouterComponent = () => {
         <Router>
             <Scene key="root" hideNavBar>
                 <Scene key="auth">
-                    <Scene key="login" component={LoginForm} title="Please Login" hideNavBar />
+                    <Scene key="login" component={LoginForm} title="Please Login    " hideNavBar />
                     <Scene key="signup" component={SignUpForm} hideNavBar />
                     <Scene
                         key="userCreate"
                         component={UserCreate}
-                        title="Create User"
+                        title="Create User    "
                         hideNavBar
                     />
                 </Scene>
@@ -81,13 +85,7 @@ const RouterComponent = () => {
                     hideNavBar
                     panHandlers={null}>
                     <Scene key="Feed">
-                        <Scene
-                            key="Detailed"
-                            component={Detailed}
-                            title="Details"
-                            icon={TabIcon1}
-                            hideNavBar
-                        />
+                        
                         <Scene
                             rightTitle={NavIcon}
                             onRight={() => { Actions.eventCreate() }}
@@ -97,29 +95,71 @@ const RouterComponent = () => {
                             icon={TabIcon1}
                         />
                         <Scene
+                            key="Detailed"
+                            component={Detailed}
+                            title="Details    "
+                            icon={TabIcon1}
+                            titleStyle={{ color: '#2699fb' }}
+                            navBarButtonColor='#2699fb'
+                            
+                        />
+                        <Scene
                             key="eventCreate"
                             component={EventCreate}
-                            title="Create Event"
+                            title="Create Event    "
                             titleStyle={{ color: '#2699fb' }}
                             navBarButtonColor='#2699fb'
                             icon={TabIcon1}
                         />
                     </Scene>
-                    <Scene
-                        key="Search"
-                        component={Search}
-                        icon={TabIcon2}
-                        hideNavBar
-                    />
+                    <Scene key="Search">
+                        <Scene
+                            key="Your Search"
+                            component={Search}
+                            title="Search    "
+                            icon={TabIcon2}
+                            initial
+                            titleStyle={{ color: '#2699fb' }}
+                            navBarButtonColor='#2699fb'
+                        />
+                        <Scene
+                            key="Searched"
+                            component={Searched}
+                            icon={TabIcon2}
+                            titleStyle={{ color: '#2699fb' }}
+                            navBarButtonColor='#2699fb'
+                        />
+                        <Scene
+                            key="SearchedList"
+                            component={SearchedList}
+                            icon={TabIcon2}
+                            titleStyle={{ color: '#2699fb' }}
+                            navBarButtonColor='#2699fb'
+                        />
+                         <Scene
+                            key="SearchDetailed"
+                            component={SearchDetailed}
+                            title="Details    "
+                            icon={TabIcon1}
+                            titleStyle={{ color: '#2699fb' }}
+                            navBarButtonColor='#2699fb'
+                            
+                        />
+                    </Scene>
                     <Scene
                         key="Message"
                         component={Message}
+                        title="Messages       "
                         icon={TabIcon4}
+                        titleStyle={{ color: '#2699fb' }}
+                        navBarButtonColor='#2699fb'
                     />
                     <Scene
                         key="Notification"
                         component={Notification}
                         icon={TabIcon5}
+                        titleStyle={{ color: '#2699fb' }}
+                        navBarButtonColor='#2699fb'
                     />
                     <Scene key="Profile">
                         <Scene
@@ -127,11 +167,13 @@ const RouterComponent = () => {
                             component={Profile}
                             icon={TabIcon3}
                             hideNavBar
+                            titleStyle={{ color: '#2699fb' }}
+                            navBarButtonColor='#2699fb'
                         />
                         <Scene
                             key="userEdit"
                             component={UserEdit}
-                            title="Edit User "
+                            title="Edit User    "
                             titleStyle={{ color: '#2699fb' }}
                             navBarButtonColor='#2699fb'
                             icon={TabIcon3}
@@ -139,7 +181,7 @@ const RouterComponent = () => {
                         <Scene
                             key="Joined"
                             component={Joined}
-                            title="Joined Events"
+                            title="Joined Events    "
                             titleStyle={{ color: '#2699fb' }}
                             navBarButtonColor='#2699fb'
                             icon={TabIcon3}
@@ -147,7 +189,7 @@ const RouterComponent = () => {
                         <Scene
                             key="Created"
                             component={Created}
-                            title="Created Events"
+                            title="Created Events    "
                             titleStyle={{ color: '#2699fb' }}
                             navBarButtonColor='#2699fb'
                             icon={TabIcon3}
@@ -155,16 +197,25 @@ const RouterComponent = () => {
                         <Scene
                             key="eventEdit"
                             component={EventEdit}
-                            title="Edit Event"
+                            title="Edit Event    "
                             icon={TabIcon3}
+                            titleStyle={{ color: '#2699fb' }}
+                            navBarButtonColor='#2699fb'
                         />
                         <Scene
                             key="Settings"
                             component={Settings}
-                            title="Settings "
+                            title="Settings    "
                             titleStyle={{ color: '#2699fb' }}
                             navBarButtonColor='#2699fb'
                             icon={TabIcon3}
+                        />
+                        <Scene
+                        key="chat"
+                        component={ChatScreenContainer}
+                        icon={TabIcon3}
+                        titleStyle={{ color: '#2699fb' }}
+                        navBarButtonColor='#2699fb'
                         />
                     </Scene>
                 </Scene>

@@ -2,25 +2,23 @@ import React, { Component } from 'react';
 import { 
     Text,
     TouchableWithoutFeedback,
-    View
+    View,
+    Image,
+    TouchableOpacity
  } from 'react-native';
  import { connect } from 'react-redux';
  import { Actions } from 'react-native-router-flux';
-import { FeedButton, LoginSection,CardSection,Card,Confirm } from './common';
-import { unJoinEvent } from '../actions';
+import { FeedButton, LoginSection,CardSection,Card } from './common';
+import { goToChat } from '../actions';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 class JoinedItem extends Component {
-  state = { showModal: false };
-
-  onAccept() {
+  onButtonPress() {
     const { uid } = this.props.joinedevent;
-    this.props.unJoinEvent({ uid });
+    this.props.goToChat({ uid });
   }
 
- onDecline() {
-      this.setState({ showModal:false });
-  }
+ 
     render() {
 
         const { name , date, location , tag , description } = this.props.joinedevent;
@@ -30,8 +28,19 @@ class JoinedItem extends Component {
                       <View style={styles.container}>
                           <View style={styles.header}>
                               <View style={styles.subsection1}>
-                                  <View style={styles.photo}>
-                                  </View>
+                              <View style={styles.photo}>
+                                    <Image
+                                        style={{
+                                            height: null,
+                                            width: null,
+                                            flex: 1,
+                                            borderRadius: 25,
+                                        }}
+                                        source={{
+                                            uri: 'https://scontent.flwo1-1.fna.fbcdn.net/v/t1.0-1/c120.0.720.720/11067469_10153348248977429_3631293933715085157_n.jpg?_nc_cat=0&oh=dbcca123d980ecc2571374fcbd534956&oe=5B888BCC'
+                                        }}
+                                    />
+                                </View>
                                   
                                   <View style={styles.mainInfo}>
                                       <View style={styles.name}>
@@ -62,19 +71,23 @@ class JoinedItem extends Component {
                           </View>
                           
                           <View style={styles.image}>
-                          </View>
+                        <Image
+                            style={{
+                                height: 200,
+                                width: null,
+                                flex: 1,
+                            }}
+                            source={{
+                                uri: 'https://scontent.flwo1-1.fna.fbcdn.net/v/t1.0-1/c120.0.720.720/11067469_10153348248977429_3631293933715085157_n.jpg?_nc_cat=0&oh=dbcca123d980ecc2571374fcbd534956&oe=5B888BCC'
+                            }}
+                        />
+                    </View>
+
                           
                           <View style={styles.footer}>
-                              <FeedButton onPress={() => this.setState({ showModal: !this.state.showModal })}>UnJoin</FeedButton>
+                              <FeedButton onPress={this.onButtonPress.bind(this)}>Chat</FeedButton>
                           </View>
                       </View>
-            <Confirm 
-                visible={this.state.showModal}
-                onAccept={this.onAccept.bind(this)}
-                onDecline={this.onDecline.bind(this)}
-                >
-                     UnJoin Event? 
-                </Confirm>
                   </Card>
         );
     }
@@ -139,6 +152,6 @@ const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
    { 
-    unJoinEvent
+    goToChat
   })
   (JoinedItem);

@@ -6,7 +6,8 @@ import {
     EVENTS_FETCH_SUCCESS,
     EVENT_SAVE_SUCCESS,
     JOINED_EVENTS_FETCH_SUCCESS,
-    CREATED_EVENTS_FETCH_SUCCESS
+    CREATED_EVENTS_FETCH_SUCCESS,
+    MEMBERS_FETCH_SUCCESS
 } from './types';
 
 export const eventUpdate = ({ prop, value }) => {
@@ -36,11 +37,10 @@ export const eventCreate = ({ name , date, location , tag , description }) => {
  };
 };
 
+
 export const eventsFetch = () => {
-    const { currentUser } = firebase.auth();
-
-
-   return (dispatch) => {
+    
+    return (dispatch) => {
     firebase.database().ref(`/events`)
       .on('value', snapshot => {
           dispatch({ type: EVENTS_FETCH_SUCCESS, payload: snapshot.val() });
@@ -95,6 +95,8 @@ export const eventSave = ({ name , date, location , tag , description, uid }) =>
     };
 };
 
+
+
 export const eventJoin = ({ name , date, location , tag , description, uid })=> {
 
     return (dispatch) => {
@@ -136,4 +138,20 @@ export const unJoinEvent = ({ uid }) => {
     .remove()
     }
 }
+
+export const goToChat = ({ uid }) => {
+    const chatId = uid;
+    return() => {
+        Actions.chat({ uid: chatId });
+    }
+}
+export const membersFetch = ( uid ) => {
+    return (dispatch) => {
+    firebase.database().ref(`/events/${uid}/joinedUsers`)
+    .on('value', snapshot => {
+        dispatch({ type: MEMBERS_FETCH_SUCCESS, payload: snapshot.val() });
+    });
+
+ };
+};
 

@@ -31,22 +31,24 @@ class ListItem extends Component {
         return (
             <Card>
                 <View style={styles.container}>
-                    <View style={styles.header}>
-                        <View style={styles.subsection1}>
-                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                <View style={styles.photo}>
-                                    <Image
-                                        style={{
-                                            height: null,
-                                            width: null,
-                                            flex: 1,
-                                            borderRadius: 25,
-                                        }}
-                                        source={{
-                                            uri: 'https://scontent.flwo1-1.fna.fbcdn.net/v/t1.0-1/c120.0.720.720/11067469_10153348248977429_3631293933715085157_n.jpg?_nc_cat=0&oh=dbcca123d980ecc2571374fcbd534956&oe=5B888BCC'
-                                        }}
-                                    />
-                                </View>
+                    <TouchableOpacity onPress={this.onButtonPress.bind(this)}>
+                        <View style={styles.header}>
+                            <View style={styles.subsection1}>
+                                <TouchableOpacity onPress={this.onButtonPress.bind(this)}>
+                                    <View style={styles.photo}>
+                                        <Image
+                                            style={{
+                                                height: null,
+                                                width: null,
+                                                flex: 1,
+                                                borderRadius: 25,
+                                            }}
+                                            source={{
+                                                uri: 'https://scontent.flwo1-1.fna.fbcdn.net/v/t1.0-1/c120.0.720.720/11067469_10153348248977429_3631293933715085157_n.jpg?_nc_cat=0&oh=dbcca123d980ecc2571374fcbd534956&oe=5B888BCC'
+                                            }}
+                                        />
+                                    </View>
+                                </TouchableOpacity>
 
                                 <View style={styles.mainInfo}>
                                     <View style={styles.name}>
@@ -70,36 +72,28 @@ class ListItem extends Component {
                                     </View>
                                 </View>
                             </View>
-                            <View style={{alignItems: 'flex-end', justifyContent: 'center',}}>
-                                <View style={styles.details}>
-                                    <TouchableOpacity onPress={this.onButtonPress.bind(this)}>
-                                        <EvilIcons name='arrow-right' color='#2699fb' size={40} />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
+
+                            <Text style={styles.description}>
+                                {description}
+                            </Text>
+                        </View>
+                        <View style={styles.image}>
+                            <Image
+                                style={{
+                                    height: 200,
+                                    width: null,
+                                    flex: 1,
+                                }}
+                                source={{
+                                    uri: 'https://water-links.s3.amazonaws.com/water-links-files/homepage-banner-cupped-hands.jpg'
+                                }}
+                            />
                         </View>
 
-                        <Text style={styles.description}>
-                            {description}
-                        </Text>
-                    </View>
-
-                    <View style={styles.image}>
-                        <Image
-                            style={{
-                                height: 200,
-                                width: null,
-                                flex: 1,
-                            }}
-                            source={{
-                                uri: 'https://water-links.s3.amazonaws.com/water-links-files/homepage-banner-cupped-hands.jpg'
-                            }}
-                        />
-                    </View>
-
-                    <View style={styles.footer}>
-                        <FeedButton onPress={eventJoin(this.props.event)}> Join </FeedButton>
-                    </View>
+                        <View style={styles.footer}>
+                            <FeedButton onPress={eventJoin(this.props.event)}> Join </FeedButton>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </Card>
         );

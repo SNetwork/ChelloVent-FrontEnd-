@@ -15,18 +15,16 @@ export const userUpdate = ({ prop, value }) => {
 };
 
 
-export const userCreate = ({ name , surname, age, location, hobby }) => {
+export const userCreate = ({ username , surname, age, userlocation, hobby }) => {
     const currentUser = firebase.auth().currentUser.uid;
-    const myRef = firebase.database().ref(`/users/${firebase.auth().currentUser.uid}/userInfo`).push();
+    const myRef = firebase.database().ref(`/users/${currentUser}/userInfo/${currentUser}`);
     const joinedEvents = 0;
 
     return (dispatch) => {
-        myRef.set({ name , surname, age, location, hobby})
+        myRef.set({ username , surname, age, userlocation, hobby})
      .then(() => {
          dispatch({ type: USER_CREATE });
      });
-     firebase.database().ref(`/users/${firebase.auth().currentUser.uid}/userInfo`)
-     .set(joinedEvents)
  };
 };
 
@@ -44,12 +42,13 @@ export const userFetch = () => {
    };
 };
 
-export const userSave = ({ name , surname, age, location, hobby, uid }) => {
+
+export const userSave = ({ username , surname, age, userlocation, hobby, uid }) => {
     const { currentUser } = firebase.auth().currentUser;
     const myRef = firebase.database().ref(`/users/${firebase.auth().currentUser.uid}/userInfo/${uid}`);
     return(dispatch) => {
 
-         myRef.set({ name , surname, age, location, hobby })
+         myRef.set({ username , surname, age, userlocation, hobby })
         .then(() => {
             dispatch ({ type: USER_SAVE_SUCCESS });
          Actions.pop({ type: 'reset' });

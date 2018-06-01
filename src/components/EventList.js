@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { View,ListView } from 'react-native';
-import { eventsFetch } from '../actions';
+import { eventsFetch,userFetch } from '../actions';
 import { Card, LoginSection,Input,  Button,Background } from './common';
 import ListItem from './ListItem';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -12,7 +12,6 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 class EventList extends Component {
     componentWillMount() {
         this.props.eventsFetch();
-
        this.createDataSource(this.props);
     }
 
@@ -34,7 +33,10 @@ class EventList extends Component {
     
     renderRow(event) {
         return (
-        <ListItem event={event} />
+        <ListItem 
+        event={event} 
+        
+        />
         );
     }
 
@@ -55,6 +57,7 @@ const mapStateToProps = (state) => {
     const events = _.map(state.events, (val, uid) => {
       return { ...val, uid };
   });
+ 
     return { events };
   };
   

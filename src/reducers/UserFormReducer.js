@@ -5,10 +5,10 @@ import {
    } from '../actions/types';
   
   const INITIAL_STATE = {
-    name: '' , 
+    username: '' , 
     surname: '',
     age: '',
-     location: '' ,
+    userlocation: '' ,
       hobby: '' 
   };
   

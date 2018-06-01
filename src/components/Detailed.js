@@ -6,7 +6,7 @@ import { eventUpdate } from '../actions';
 import { LoginSection, Input, Card, CardSection, Button, Background, FeedButton, } from './common';
 import { eventJoin } from '../actions/EventActions';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-
+import MembersList from './MembersList';
 class Detailed extends Component {
   componentWillMount() {
     _.each(this.props.event, (value, prop) => {
@@ -26,7 +26,7 @@ class Detailed extends Component {
               flex: 1,
             }}
             source={{
-              uri: 'https://water-links.s3.amazonaws.com/water-links-files/homepage-banner-cupped-hands.jpg'
+              uri: 'https://scontent.flwo1-1.fna.fbcdn.net/v/t1.0-1/c120.0.720.720/11067469_10153348248977429_3631293933715085157_n.jpg?_nc_cat=0&oh=dbcca123d980ecc2571374fcbd534956&oe=5B888BCC'
             }}
           />
         </View>
@@ -34,27 +34,27 @@ class Detailed extends Component {
         <View style={styles.body}>
           <View style={styles.name}>
             <Text style={styles.nameStyle}>
-              {name}
+              {name+"   "}
             </Text>
           </View>
 
           <View style={styles.LocDate}>
             <View style={styles.date}>
               <Text style={styles.LocDateText}>
-                {date}
+                {date+"   "}
               </Text>
             </View>
 
             <View style={styles.location}>
               <Text style={styles.LocDateText}>
-                {location}
+                {location+"   "}
               </Text>
             </View>
           </View>
 
           <View style={styles.description}>
-            <Text style={styles.descriptionText}>
-              {description}
+        <Text style={styles.descriptionText}>
+              {description+"   "}
             </Text>
           </View>
         </View>
@@ -62,6 +62,7 @@ class Detailed extends Component {
         <View style={styles.footer}>
           <Button onPress={eventJoin(this.props.event)}> Join </Button>
         </View>
+        <MembersList uid={this.props.event.uid}/>
       </Background>
     );
   }
@@ -76,7 +77,7 @@ const styles = {
   body: {
     paddingLeft: 30,
     paddingRight: 30,
-    paddingTop: 25,
+    paddingTop: 10,
   },
   name: {},
   LocDate: {
@@ -91,7 +92,7 @@ const styles = {
     margin: 30,
   },
   description: {
-    marginTop: 20,
+    marginTop: 10,
   },
   nameStyle: {
     fontSize: 27,

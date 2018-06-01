@@ -12,7 +12,7 @@ class EventForm extends Component {
           <LoginSection>
              <Input 
               label="Name"
-              placeholder="Event name"
+              placeholder="Event name..."
               value={this.props.name}
               onChangeText={value => this.props.eventUpdate({ prop: 'name', value })}
               />
@@ -21,7 +21,7 @@ class EventForm extends Component {
              <LoginSection>
              <Input 
               label="Date"
-              placeholder="24.06.2018"
+              placeholder="date..."
               keyboardType='numeric'
               value={this.props.date}
               onChangeText={value => this.props.eventUpdate({ prop: 'date', value })}
@@ -31,7 +31,7 @@ class EventForm extends Component {
              <LoginSection>
              <Input 
               label="Location"
-              placeholder="Lviv"
+              placeholder="City.."
               value={this.props.location}
               onChangeText={value => this.props.eventUpdate({ prop: 'location', value })}
               /> 
@@ -40,7 +40,7 @@ class EventForm extends Component {
              <LoginSection>
              <Input 
               label="Tag"
-              placeholder="#football"
+              placeholder="#tag"
               value={this.props.tag}
               onChangeText={value => this.props.eventUpdate({ prop: 'tag', value })}
               /> 

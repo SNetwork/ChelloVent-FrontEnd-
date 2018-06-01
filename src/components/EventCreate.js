@@ -8,7 +8,6 @@ class EventCreate extends Component {
 
     onButtonPress(){
      const { name , date, location , tag , description } = this.props;
-
      this.props.eventCreate({ name , date, location , tag , description });
     }
 
